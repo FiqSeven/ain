@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selamat Hari Jadi Sayang</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      color: white;
+      text-align: center;
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    #countdown {
+      font-size: 2rem;
+    }
+    #content {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .message {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 15px;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+  <div id="countdown">
+    Kejutan akan tiba dalam <span id="timer"></span>
+  </div>
+
+  <div id="content">
+    <div class="message">
+      <h1>Selamat Hari Jadi Sayang 💖</h1>
+      <p>
+        Hari ini hari istimewa untuk insan paling istimewa dalam hidup saya.
+        Terima kasih sebab sentiasa ada, sebab jadi cahaya saya, sebab jadi awak.
+        Saya ada satu hadiah kecil… lagu yang saya cipta khas untuk awak 🎶
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const targetDate = new Date('2025-04-23T00:00:00').getTime();
+    const timerElement = document.getElementById('timer');
+    const countdown = document.getElementById('countdown');
+    const content = document.getElementById('content');
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance <= 0) {
+        countdown.style.display = 'none';
+        content.style.display = 'flex';
+      } else {
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        timerElement.innerHTML = `${hours} jam ${minutes} minit ${seconds} saat`;
+      }
+    };
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
